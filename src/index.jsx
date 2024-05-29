@@ -26,4 +26,4 @@ root.render(
   <BrowserRouter>
     <App/>
   </BrowserRouter>);
-registerServiceWorker();
+//registerServiceWorker();
