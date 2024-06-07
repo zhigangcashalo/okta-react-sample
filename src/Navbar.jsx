@@ -27,32 +27,36 @@ const Navbar = () => {
 
   return (
     <div>
-      <Menu fixed="top" inverted>
-        <Container>
-          <Menu.Item header>
-            <Image size="mini" src="/react.svg" />
-            &nbsp;
-            <Link to="/">Okta-React Sample Project</Link>
-          </Menu.Item>
-          {authState.isAuthenticated && (
-          <Menu.Item id="messages-button">
-            <Icon name="mail outline" />
-            <Link to="/messages">Messages</Link>
-          </Menu.Item>
-          )}
-          {authState.isAuthenticated && (
-            <Menu.Item id="profile-button">
-              <Link to="/profile">Profile</Link>
-            </Menu.Item>
-          )}
-          {authState.isAuthenticated && (
-            <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>
-          )}
-          {!authState && !authState.isAuthenticated && (
-            <Menu.Item onClick={login}>Login</Menu.Item>
-          )}
-        </Container>
-      </Menu>
+      {authState.isAuthenticated && (
+        <Menu fixed="top" inverted>
+          <Container>
+            {authState.isAuthenticated && (
+              <Menu.Item header>
+                <Image size="mini" src="/react.svg" />
+                &nbsp;
+                <Link to="/">Okta-React Sample Project</Link>
+              </Menu.Item>
+            )}
+            {authState.isAuthenticated && (
+              <Menu.Item id="messages-button">
+                <Icon name="mail outline" />
+                <Link to="/messages">Messages</Link>
+              </Menu.Item>
+            )}
+            {authState.isAuthenticated && (
+              <Menu.Item id="profile-button">
+                <Link to="/profile">Profile</Link>
+              </Menu.Item>
+            )}
+            {authState.isAuthenticated && (
+              <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>
+            )}
+            {!authState && !authState.isAuthenticated && (
+              <Menu.Item onClick={login}>Login</Menu.Item>
+            )}
+          </Container>
+        </Menu>
+      )}
     </div>
   );
 };

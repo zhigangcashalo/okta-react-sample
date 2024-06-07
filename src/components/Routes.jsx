@@ -18,10 +18,12 @@ import Home from '../pages/Home';
 import Loading from './Loading';
 import Messages from '../pages/Messages';
 import Profile from '../pages/Profile';
+import Login from "../pages/Login.jsx";
 
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/login" exact={true} element={<Login/>}/>
       <Route path="/" exact={true} element={<Home/>}/>
       <Route path="login/callback" element={<LoginCallback loadingElement={<Loading/>}/>}/>
       <Route path="/messages" element={<RequiredAuth/>}>

@@ -13,15 +13,18 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!authState || !authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info
       setUserInfo(null);
+      navigate('/login')
     } else {
       oktaAuth.getUser().then((info) => {
         setUserInfo(info);

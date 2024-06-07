@@ -25,9 +25,11 @@ const Profile = () => {
     } else {
       setUserInfo(authState.idToken.claims);
       // get user information from `/userinfo` endpoint
-      /*oktaAuth.getUser().then((info) => {
+      
+      oktaAuth.getUser().then((info) => {
         setUserInfo(info);
-      });*/
+        
+      })
     }
   }, [authState, oktaAuth]); // Update if authState changes
 
