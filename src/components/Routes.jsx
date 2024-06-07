@@ -19,6 +19,7 @@ import Loading from './Loading';
 import Messages from '../pages/Messages';
 import Profile from '../pages/Profile';
 import Login from "../pages/Login.jsx";
+import Setting from "../pages/Setting.jsx";
 
 const AppRoutes = () => {
   return (
@@ -31,6 +32,9 @@ const AppRoutes = () => {
       </Route>
       <Route path="/profile" element={<RequiredAuth/>}>
         <Route path="" element={<Profile/>}/>
+      </Route>
+      <Route path="/setting" element={<RequiredAuth/>}>
+        <Route path="" element={<Setting/>}/>
       </Route>
     </Routes>
   );

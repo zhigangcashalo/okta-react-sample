@@ -15,23 +15,29 @@ import { useOktaAuth } from '@okta/okta-react';
 import { toRelativeUrl } from '@okta/okta-auth-js';
 import { Outlet } from 'react-router-dom';
 import Loading from './Loading';
+import { useNavigate } from 'react-router-dom';
 
 export const RequiredAuth = () => {
   const { oktaAuth, authState } = useOktaAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!authState) {
+      console.log('000000000')
       return;
     }
 
     if (!authState?.isAuthenticated) {
-      const originalUri = toRelativeUrl(window.location.href, window.location.origin);
-      oktaAuth.setOriginalUri(originalUri);
-      oktaAuth.signInWithRedirect();
+      console.log('111111111')
+      navigate('/login')
+      // const originalUri = toRelativeUrl(window.location.href, window.location.origin);
+      // oktaAuth.setOriginalUri(originalUri);
+      // oktaAuth.signInWithRedirect();
     }
   }, [oktaAuth, !!authState, authState?.isAuthenticated]);
 
   if (!authState || !authState?.isAuthenticated) {
+    console.log('666666666')
     return (<Loading />);
   }
 
